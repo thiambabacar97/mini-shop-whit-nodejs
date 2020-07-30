@@ -41,10 +41,9 @@ app.get('/', function(req, res) {
 
                 app.post('/findProduit', (req, res)=>{
                     Produit.findProduits(req.body.produit, (data)=>{
-                        // if (data === []) {
-                        //     req.flash('error', 'auchune donne correspondante n\'est trouve') ;
-                        // }
-                        console.log(data);
+                        if (data === []) {
+                            req.flash('error', 'auchune donne correspondante n\'est trouve') ;
+                        }
                         res.render('front', {produits: data, commands: command, somme: somme});
                     })
                 })
